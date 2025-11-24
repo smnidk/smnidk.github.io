@@ -2,7 +2,7 @@ name: Create backup archive
 on:
   push:
     branches:
-      - main  # запускать при каждом пуше в основную ветку main
+      - main 
 jobs:
   backup:
     runs-on: ubuntu-latest  
