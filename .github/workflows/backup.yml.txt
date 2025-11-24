@@ -1,0 +1,21 @@
+name: Create backup archive
+on:
+  push:
+    branches:
+      - main  # запускать при каждом пуше в основную ветку main
+jobs:
+  backup:
+    runs-on: ubuntu-latest  # GitHub выделяет виртуальную машину
+Ubuntu
+    steps:
+      - name: Получение кода
+        uses: actions/checkout@v4  # скачивает репозиторий на сервер
+      - name: Создание архива
+        run: zip -r backup.zip .   # архивирует все файлы проекта в
+backup.zip
+      - name: Сохранение архива в облаке GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-backup        # имя архива в облаке GitHub
+          path: backup.zip         # путь к файлу, который нужно
+загрузить
